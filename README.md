@@ -1,3 +1,5 @@
-# Bluemoji
+# impro-plugin-bluemoji
 
-Renders [Bluemoji](https://github.com/aendra-rininsland/bluemoji) custom emoji in posts. (Stickers and reactions TBD!)
+Renders [Bluemoji](https://github.com/aendra-rininsland/bluemoji) custom emoji in posts 🦋
+
+(Stickers and reactions TBD)

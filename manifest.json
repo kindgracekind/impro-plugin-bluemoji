@@ -1,7 +1,7 @@
 {
   "id": "bluemoji",
   "name": "Bluemoji",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "Impro",
-  "description": "Renders Bluemoji custom emoji in posts."
+  "description": "Renders Bluemoji custom emoji in posts 🦋"
 }
