@@ -249,7 +249,10 @@ var Plugin = class {
   // callback(tokens, context) receives the rich-text token stream for one
   // post and returns a new token array (or the input unchanged). The host
   // batches all posts of a render into one call per plugin.
-  registerRichTextTransform(callback = (tokens) => tokens) {
+  //
+  // options.handlesFacetTypes: array of facet feature $type strings this
+  // transform owns, to prevent render flash of fallback text
+  registerRichTextTransform(callback = (tokens) => tokens, options = {}) {
     const handlerId = uuid.create();
     callHandlers.set(handlerId, async (batch) => {
       const results = [];
@@ -263,10 +266,12 @@ var Plugin = class {
       }
       return results;
     });
+    const handlesFacetTypes = Array.isArray(options.handlesFacetTypes) ? options.handlesFacetTypes.filter((type) => typeof type === "string") : [];
     self.postMessage({
       type: "register",
       target: "richTextTransform",
-      handlerId
+      handlerId,
+      handlesFacetTypes
     });
   }
   registerSlot(name, callback = () => null) {
@@ -626,7 +631,8 @@ var BluemojiPlugin = class extends Plugin {
       }
     `);
     this.registerRichTextTransform(
-      async (tokens) => Promise.all(tokens.map((token) => transformToken(this, token)))
+      async (tokens) => Promise.all(tokens.map((token) => transformToken(this, token))),
+      { handlesFacetTypes: ["blue.moji.richtext.facet"] }
     );
   }
   onunload() {

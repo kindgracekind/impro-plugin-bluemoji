@@ -154,8 +154,10 @@ export default class BluemojiPlugin extends Plugin {
       }
     `);
 
-    this.registerRichTextTransform(async (tokens) =>
-      Promise.all(tokens.map((token) => transformToken(this, token))),
+    this.registerRichTextTransform(
+      async (tokens) =>
+        Promise.all(tokens.map((token) => transformToken(this, token))),
+      { handlesFacetTypes: ["blue.moji.richtext.facet"] },
     );
   }
 
