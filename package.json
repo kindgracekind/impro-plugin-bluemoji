@@ -1,0 +1,16 @@
+{
+  "name": "bluemoji",
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "start": "npm run watch",
+    "build": "esbuild src/main.js --bundle --format=cjs --outfile=main.js",
+    "watch": "esbuild src/main.js --bundle --format=cjs --outfile=main.js --watch"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.10"
+  },
+  "dependencies": {
+    "@impro.social/impro-plugin": "latest"
+  }
+}
